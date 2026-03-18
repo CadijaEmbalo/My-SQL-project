@@ -1,4 +1,4 @@
-#🗄️ SQL Retail & Sales Data Analysis
+# 🗄️ SQL Retail & Sales Data Analysis
 A Data Technician Bootcamp Project
 ---
 # 🔍 Overview
@@ -146,11 +146,86 @@ The product manager wants to analyse products priced over £50.
 ➡️ Write a SQL query to retrieve all columns from the Products table where the Price is greater than 50. 
 
 ```
-select * from products where price >50; 
+select * from products where price >50;
 ```
+
+### 5.Linking Products to Suppliers 
+Management wants to know which supplier provides each product in the inventory. 
+➡️ Write a SQL query to find the supplier of each product. 
+
+```
+select products.productname, 
+suppliers.suppliername 
+from products 
+inner join suppliers 
+on products.supplierid= suppliers.supplierid;
+```
+
+### 6.Classifying Products by Category 
+The category manager is reviewing how products are organized. 
+➡️ Write a SQL query to find the category of each product. 
+
+```
+select  
+    products.productname, 
+    categories.categoryname 
+from Products 
+inner join categories 
+on products.categoryid = categories.categoryid
+```
+
+
+## 7.Category-Specific Product Report: Meat/Poultry 
+The food department wants to view all items in the Meat/Poultry category. 
+➡️ Write a SQL query to retrieve all products belonging to the Meat/Poultry category. 
+
+```
+select products.productname, 
+categories.categoryname 
+from products 
+inner join categories  
+on products.categoryid= categories.categoryid 
+WHERE Categories.CategoryName = 'Meat/Poultry';
+```
+
  
 
+ 
 
+ 
+
+### 8.Complete Order Overview 
+The business team wants to see a detailed order list with customer and employee information. 
+➡️ Write a SQL query to retrieve the Order ID, Order Date, Customer Name, and Employee Name for all orders. 
+
+```
+SELECT  
+    Orders.OrderID, 
+    Orders.OrderDate, 
+    Customers.CustomerName, 
+  FROM Orders 
+INNER JOIN Customers 
+    ON Orders.CustomerID = Customers.CustomerID 
+INNER JOIN Employees 
+    ON Orders.EmployeeID = Employees.EmployeeID;
+```
+
+
+6.📘 Yearly Order Summary – 1996 
+The team is auditing customer orders made in 1996. 
+➡️ Write a SQL query to create a report for all the orders of 1996 and their customers. 
+
+```
+SELECT  
+    Orders.OrderID, 
+    Orders.OrderDate, 
+    Customers.CustomerName 
+FROM Orders 
+INNER JOIN Customers 
+    ON Orders.CustomerID = Customers.CustomerID 
+WHERE YEAR(Orders.OrderDate) = "1996?";
+ ```
+ 
 
 
 
